@@ -20,7 +20,7 @@ $(document).ready(function() {
     // get the maker function for the kind of dancer we're supposed to make
     var dancerMakerFunction = window[dancerMakerFunctionName];
 
-    // make a dancer with a random position
+    // make a red dancer with a random position
     var dancer = new dancerMakerFunction(
       $("body").height() * (0.8*Math.random() + 0.1),
       $("body").width() * (0.8*Math.random() + 0.1),
@@ -31,7 +31,7 @@ $(document).ready(function() {
   });
 
   $('.addBouncyButton').on('click', function(event) {
-    // make a bouncy dancer with a random position
+    // make a blue dancer with a random position
     var bouncyDancer = new makeBouncyDancer(
       $("body").height() * (0.8*Math.random() + 0.1),
       $("body").width() * (0.8*Math.random() + 0.1),
@@ -52,12 +52,37 @@ $(document).ready(function() {
     window.dancers.push(greenDancer);
   });
 
-  $('.addLineUpButton').on('click', function(event) {
-    // make dancers line up
+  $('.leftLineUpButton').on('mousedown', function(event) {
+    // bubbles left
     for (var i = 0; i < window.dancers.length; i++) {
       var thisDancer = window.dancers[i];
-      thisDancer.setPosition(thisDancer.top, 40);
+      thisDancer.left = 40;
+      thisDancer.setPosition(thisDancer.top, thisDancer.left);
     }
   });
 
+  $('.rightLineUpButton').on('mousedown', function(event) {
+    // bubbles right
+    for (var i = 0; i < window.dancers.length; i++) {
+      var thisDancer = window.dancers[i];
+      thisDancer.left = $("body").width() * 0.9;
+      thisDancer.setPosition(thisDancer.top, thisDancer.left);
+    }
+  });
+
+  $(document).on('mousemove', function() {
+    for (var i = 0; i < window.dancers.length; i++) {
+      // calculate each bubble's distance from mouse
+      var thisDancer = window.dancers[i];
+      var xdist = thisDancer.left - event.pageX;
+      var ydist = thisDancer.top - event.pageY;
+      dist = Math.sqrt((xdist * xdist) + (ydist * ydist));
+
+      if (dist < 250) {
+        thisDancer.left += thisDancer.speed * (xdist / dist);
+        thisDancer.top += thisDancer.speed * (ydist / dist);
+        thisDancer.setPosition(thisDancer.top, thisDancer.left);
+      }
+    }
+  });
 });

@@ -24,7 +24,11 @@ body, a:link, a:visited, a:active{
   padding:5px 12px;
   float:right;
 }
-.title, .addLineUpButton{
+.title, .leftLineUpButton{
+  padding:5px 12px;
+  float:right;
+}
+.title, .rightLineUpButton{
   padding:5px 12px;
   float:right;
 }
@@ -37,7 +41,7 @@ body, a:link, a:visited, a:active{
 }
 .dancer{
   border:50px solid red;
-  opacity: 0.45;
+  opacity: 0.4;
   border-radius:50px;
   position:absolute;
 }
