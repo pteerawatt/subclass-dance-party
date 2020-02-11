@@ -3,13 +3,28 @@ body, html{
 }
 body{
   margin: 0px;
-  background-color:#444;
+  background-image: url('dance_floor.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
   color: lightblue;
 }
 .title, .addDancerButton{
+  padding:5px 12px;
+  float:right;
+}
+.title, .addBouncyButton{
+  padding:5px 12px;
+  float:right;
+}
+.title, .addGreenButton{
+  padding:5px 12px;
+  float:right;
+}
+.title, .addLineUpButton{
   padding:5px 12px;
   float:right;
 }
@@ -27,6 +42,11 @@ body, a:link, a:visited, a:active{
 }
 .blue{
   border:10px solid blue;
+  border-radius:10px;
+  position:absolute;
+}
+.green{
+  border:10px solid green;
   border-radius:10px;
   position:absolute;
 }

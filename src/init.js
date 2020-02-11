@@ -1,9 +1,8 @@
 $(document).ready(function() {
   window.dancers = [];
-
+  debugger;
   $('.addDancerButton').on('click', function(event) {
-    /* This function sets up the click handlers for the create-dancer
-     * buttons on dancefloor.html. You should only need to make one small change to it.
+    /*
      * As long as the "data-dancer-maker-function-name" attribute of a
      * class="addDancerButton" DOM node matches one of the names of the
      * maker functions available in the global scope, clicking that node
@@ -23,23 +22,42 @@ $(document).ready(function() {
 
     // make a dancer with a random position
     var dancer = new dancerMakerFunction(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
-      Math.random() * 1000
+      $("body").height() * (0.8*Math.random() + 0.1),
+      $("body").width() * (0.8*Math.random() + 0.1),
+      (Math.random() * 1000) + 500
     );
     $('body').append(dancer.$node);
+    window.dancers.push(dancer);
   });
 
-  $('.addDancerButton').on('click', function(event) {
-    debugger;
+  $('.addBouncyButton').on('click', function(event) {
     // make a bouncy dancer with a random position
     var bouncyDancer = new makeBouncyDancer(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
-      Math.random() * 1000
+      $("body").height() * (0.8*Math.random() + 0.1),
+      $("body").width() * (0.8*Math.random() + 0.1),
+      (Math.random() * 1000) + 500
     );
-    $('body').append(dancer.$node);
+    $('body').append(bouncyDancer.$node);
+    window.dancers.push(bouncyDancer);
+  });
 
+  $('.addGreenButton').on('click', function(event) {
+    // make a green dancer with a random position
+    var greenDancer = new makeGreenDancer(
+      $("body").height() * (0.8*Math.random() + 0.1),
+      $("body").width() * (0.8*Math.random() + 0.1),
+      (Math.random() * 1000) + 500
+    );
+    $('body').append(greenDancer.$node);
+    window.dancers.push(greenDancer);
+  });
+
+  $('.addLineUpButton').on('click', function(event) {
+    // make dancers line up
+    for (var i = 0; i < window.dancers.length; i++) {
+      var thisDancer = window.dancers[i];
+      thisDancer.setPosition(thisDancer.top, 40);
+    }
   });
 
 });
