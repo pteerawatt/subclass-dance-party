@@ -18,6 +18,12 @@ describe('blinkyDancer', function() {
     expect(blinkyDancer.$node.toggle.called).to.be.true;
   });
 
+  it('should bind inputs correctly', function() {
+    expect(blinkyDancer.top).to.equal(10);
+    expect(blinkyDancer.left).to.equal(20);
+    expect(blinkyDancer.timeBetweenSteps).to.equal(100);
+  });
+
   describe('dance', function() {
     it('should call step at least once per second', function() {
       sinon.spy(blinkyDancer, 'step');
