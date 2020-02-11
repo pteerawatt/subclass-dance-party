@@ -36,17 +36,16 @@ body, a:link, a:visited, a:active{
   background-color: #777;
 }
 .dancer{
-  border:10px solid red;
-  border-radius:10px;
+  border:50px solid red;
+  opacity: 0.45;
+  border-radius:50px;
   position:absolute;
 }
 .blue{
-  border:10px solid blue;
-  border-radius:10px;
-  position:absolute;
+  border:40px solid blue;
+  border-radius:40px;
 }
 .green{
-  border:10px solid green;
-  border-radius:10px;
-  position:absolute;
+  border:30px solid green;
+  border-radius:30px;
 }

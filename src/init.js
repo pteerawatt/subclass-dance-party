@@ -1,6 +1,6 @@
 $(document).ready(function() {
   window.dancers = [];
-  debugger;
+
   $('.addDancerButton').on('click', function(event) {
     /*
      * As long as the "data-dancer-maker-function-name" attribute of a
@@ -24,7 +24,7 @@ $(document).ready(function() {
     var dancer = new dancerMakerFunction(
       $("body").height() * (0.8*Math.random() + 0.1),
       $("body").width() * (0.8*Math.random() + 0.1),
-      (Math.random() * 1000) + 500
+      (Math.random() * 100) + 50
     );
     $('body').append(dancer.$node);
     window.dancers.push(dancer);
@@ -35,7 +35,7 @@ $(document).ready(function() {
     var bouncyDancer = new makeBouncyDancer(
       $("body").height() * (0.8*Math.random() + 0.1),
       $("body").width() * (0.8*Math.random() + 0.1),
-      (Math.random() * 1000) + 500
+      (Math.random() * 100) + 50
     );
     $('body').append(bouncyDancer.$node);
     window.dancers.push(bouncyDancer);
@@ -46,7 +46,7 @@ $(document).ready(function() {
     var greenDancer = new makeGreenDancer(
       $("body").height() * (0.8*Math.random() + 0.1),
       $("body").width() * (0.8*Math.random() + 0.1),
-      (Math.random() * 1000) + 500
+      (Math.random() * 100) + 50
     );
     $('body').append(greenDancer.$node);
     window.dancers.push(greenDancer);
