@@ -73,7 +73,7 @@ $(document).ready(function() {
   // makes mouse repel bubbles
   $(document).on('mousemove', function() {
     for (var i = 0; i < window.dancers.length; i++) {
-      // calculate each bubble's distance from mouse
+    // calculate each bubble's distance from mouse
       var thisDancer = window.dancers[i];
       var xdist = thisDancer.left - event.pageX;
       var ydist = thisDancer.top - event.pageY;
@@ -83,7 +83,14 @@ $(document).ready(function() {
         thisDancer.left += thisDancer.speed * (xdist / dist);
         thisDancer.top += thisDancer.speed * (ydist / dist);
         thisDancer.setPosition(thisDancer.top, thisDancer.left);
+        thisDancer.invert = !thisDancer.invert;
       }
+    }
+  });
+
+  $('.dancefloor').on('click', function() {
+    for (var i = 0; i < window.dancers.length; i++) {
+      window.dancers[i].changeColor();
     }
   });
 });

@@ -6,6 +6,9 @@ var Dancer = function(top, left, timeBetweenSteps) {
   this.timeBetweenSteps = timeBetweenSteps;
   this.nearestNeighbor;
   this.speed = 10;
+  this.invert = false;
+  // this.mainColor = 'black';
+  // this.invertedColor = 'white';
 
   this.step();
   this.setPosition(this.top, this.left);
@@ -65,4 +68,16 @@ Dancer.prototype.setPosition = function(top, left) {
     left: left
   };
   this.$node.css(styleSettings);
+};
+
+Dancer.prototype.changeColor = function() {
+  if (!this.invert) {
+    this.$node.removeClass(this.mainColor);
+    this.$node.addClass(this.invertedColor);
+    this.invert = true;
+  } else {
+    this.$node.removeClass(this.invertedColor);
+    this.$node.addClass(this.mainColor);
+    this.invert = false;
+  }
 };

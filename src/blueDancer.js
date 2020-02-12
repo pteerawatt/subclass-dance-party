@@ -1,7 +1,9 @@
 var BlueDancer = function(top, left, timeBetweenSteps) {
 // blue bubbles
   Dancer.call(this, top, left, timeBetweenSteps);
-  this.$node.addClass('blue');
+  this.mainColor = 'blue';
+  this.invertedColor = 'gold';
+  this.$node.addClass(this.mainColor);
   this.speed = 7;
 };
 
