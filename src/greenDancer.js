@@ -1,13 +1,13 @@
-var makeGreenDancer = function(top, left, timeBetweenSteps) {
+var GreenDancer = function(top, left, timeBetweenSteps) {
 // green bubbles
-  makeDancer.call(this, top, left, timeBetweenSteps);
+  Dancer.call(this, top, left, timeBetweenSteps);
   this.$node.addClass('green');
   this.speed = 5;
 };
 
-makeGreenDancer.prototype = Object.create(makeDancer.prototype);
-makeGreenDancer.prototype.constructor = makeGreenDancer;
+GreenDancer.prototype = Object.create(Dancer.prototype);
+GreenDancer.prototype.constructor = GreenDancer;
 
-makeGreenDancer.prototype.step = function() {
-  makeDancer.prototype.step.call(this);
+GreenDancer.prototype.step = function() {
+  Dancer.prototype.step.call(this);
 };

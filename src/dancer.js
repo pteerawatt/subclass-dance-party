@@ -1,6 +1,5 @@
 // Creates and returns a new dancer object that can step
-var makeDancer = function(top, left, timeBetweenSteps) {
-  // use jQuery to create an HTML <span> tag
+var Dancer = function(top, left, timeBetweenSteps) {
   this.$node = $('<span class="dancer"></span>');
   this.top = top;
   this.left = left;
@@ -12,7 +11,7 @@ var makeDancer = function(top, left, timeBetweenSteps) {
   this.setPosition(this.top, this.left);
 };
 
-makeDancer.prototype.step = function() {
+Dancer.prototype.step = function() {
 // loop over window.dancers, find the nearest neighbor and set to this.nearestNeighbor
   var lowestDist = Infinity;
   var dist, xdist, ydist, neighbor;
@@ -40,17 +39,17 @@ makeDancer.prototype.step = function() {
   }
 
   // enforce borders
-  if (this.top > $("body").height() * 0.8) {
-    this.top = $("body").height() * 0.8;
+  if (this.top > $('body').height() * 0.8) {
+    this.top = $('body').height() * 0.8;
   }
-  if (this.top < $("body").height() * 0.1) {
-    this.top = $("body").height() * 0.1;
+  if (this.top < $('body').height() * 0.1) {
+    this.top = $('body').height() * 0.1;
   }
-  if (this.left > $("body").width() * 0.9) {
-    this.left = $("body").width() * 0.9;
+  if (this.left > $('body').width() * 0.9) {
+    this.left = $('body').width() * 0.9;
   }
-  if (this.left < $("body").width() * 0.05) {
-    this.left = $("body").width() * 0.05;
+  if (this.left < $('body').width() * 0.05) {
+    this.left = $('body').width() * 0.05;
   }
 
   // update positions
@@ -58,7 +57,7 @@ makeDancer.prototype.step = function() {
   setTimeout(this.step.bind(this), this.timeBetweenSteps);
 };
 
-makeDancer.prototype.setPosition = function(top, left) {
+Dancer.prototype.setPosition = function(top, left) {
   // Use css top and left properties to position our <span> tag
   // where it belongs on the page. See http://api.jquery.com/css/
   var styleSettings = {

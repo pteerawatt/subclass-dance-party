@@ -3,32 +3,34 @@ body, html{
 }
 body{
   margin: 0px;
-  background-image: url('dance_floor.jpg');
+  background-color: black;
+  background-image: url('dance_floor4.png');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   font-size: 18px;
 }
-body, a:link, a:visited, a:active{
-  color: lightblue;
+.title {
+  padding:5px 12px;
+  float:left;
 }
-.title, .addDancerButton{
+.addRedButton{
   padding:5px 12px;
   float:right;
 }
-.title, .addBouncyButton{
+.addBlueButton{
   padding:5px 12px;
   float:right;
 }
-.title, .addGreenButton{
+.addGreenButton{
   padding:5px 12px;
   float:right;
 }
-.title, .leftLineUpButton{
+.leftLineUpButton{
   padding:5px 12px;
-  float:right;
+  float:left;
 }
-.title, .rightLineUpButton{
+.rightLineUpButton{
   padding:5px 12px;
   float:right;
 }

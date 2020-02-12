@@ -1,7 +1,7 @@
 $(document).ready(function() {
   window.dancers = [];
 
-  $('.addDancerButton').on('click', function(event) {
+  $('.addRedButton').on('click', function(event) {
     /*
      * As long as the "data-dancer-maker-function-name" attribute of a
      * class="addDancerButton" DOM node matches one of the names of the
@@ -15,45 +15,45 @@ $(document).ready(function() {
      * to the stage.
      */
 
-    var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
+    // var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
 
-    // get the maker function for the kind of dancer we're supposed to make
-    var dancerMakerFunction = window[dancerMakerFunctionName];
+    // // get the maker function for the kind of dancer we're supposed to make
+    // var dancerMakerFunction = window[dancerMakerFunctionName];
 
     // make a red dancer with a random position
-    var dancer = new dancerMakerFunction(
-      $("body").height() * (0.8*Math.random() + 0.1),
-      $("body").width() * (0.8*Math.random() + 0.1),
+    var dancer = new RedDancer(
+      $('body').height() * (0.8 * Math.random() + 0.1),
+      $('body').width() * (0.8 * Math.random() + 0.1),
       (Math.random() * 100) + 50
     );
     $('body').append(dancer.$node);
     window.dancers.push(dancer);
   });
 
-  $('.addBouncyButton').on('click', function(event) {
-    // make a blue dancer with a random position
-    var bouncyDancer = new makeBouncyDancer(
-      $("body").height() * (0.8*Math.random() + 0.1),
-      $("body").width() * (0.8*Math.random() + 0.1),
+  // make a blue dancer with a random position
+  $('.addBlueButton').on('click', function(event) {
+    var blueDancer = new BlueDancer(
+      $('body').height() * (0.8 * Math.random() + 0.1),
+      $('body').width() * (0.8 * Math.random() + 0.1),
       (Math.random() * 100) + 50
     );
-    $('body').append(bouncyDancer.$node);
-    window.dancers.push(bouncyDancer);
+    $('body').append(blueDancer.$node);
+    window.dancers.push(blueDancer);
   });
 
+  // make a green dancer with a random position
   $('.addGreenButton').on('click', function(event) {
-    // make a green dancer with a random position
-    var greenDancer = new makeGreenDancer(
-      $("body").height() * (0.8*Math.random() + 0.1),
-      $("body").width() * (0.8*Math.random() + 0.1),
+    var greenDancer = new GreenDancer(
+      $('body').height() * (0.8 * Math.random() + 0.1),
+      $('body').width() * (0.8 * Math.random() + 0.1),
       (Math.random() * 100) + 50
     );
     $('body').append(greenDancer.$node);
     window.dancers.push(greenDancer);
   });
 
+  // teleport bubbles left
   $('.leftLineUpButton').on('mousedown', function(event) {
-    // bubbles left
     for (var i = 0; i < window.dancers.length; i++) {
       var thisDancer = window.dancers[i];
       thisDancer.left = 40;
@@ -61,15 +61,16 @@ $(document).ready(function() {
     }
   });
 
+  // teleport bubbles right
   $('.rightLineUpButton').on('mousedown', function(event) {
-    // bubbles right
     for (var i = 0; i < window.dancers.length; i++) {
       var thisDancer = window.dancers[i];
-      thisDancer.left = $("body").width() * 0.9;
+      thisDancer.left = $('body').width() * 0.9;
       thisDancer.setPosition(thisDancer.top, thisDancer.left);
     }
   });
 
+  // makes mouse repel bubbles
   $(document).on('mousemove', function() {
     for (var i = 0; i < window.dancers.length; i++) {
       // calculate each bubble's distance from mouse
